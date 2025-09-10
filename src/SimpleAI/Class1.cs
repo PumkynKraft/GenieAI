@@ -1,4 +1,4 @@
-namespace IntelliFx;
+namespace SimpleAI;
 
 public class Class1
 {

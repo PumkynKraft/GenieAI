@@ -1,12 +1,12 @@
-# IntelliFx
+# SimpleAI
 
 **An intelligent AI framework that makes your applications truly smart through prompt-based actioning and autonomous reasoning.**
 
-IntelliFx transforms ordinary applications into intelligent systems by embedding Large Language Models (LLMs) as the thinking brain, enabling natural language processing, automated planning, and self-correcting execution workflows.
+SimpleAI transforms ordinary applications into intelligent systems by embedding Large Language Models (LLMs) as the thinking brain, enabling natural language processing, automated planning, and self-correcting execution workflows.
 
 ## 🧠 Core Concept
 
-IntelliFx operates on a simple yet powerful principle: **Semantic Goals → Intelligent Planning → Automated Execution**
+SimpleAI operates on a simple yet powerful principle: **Semantic Goals → Intelligent Planning → Automated Execution**
 
 Instead of hardcoded logic, your applications can now:
 - Understand natural language inputs and intentions
@@ -27,7 +27,7 @@ Instead of hardcoded logic, your applications can now:
 - **Hybrid Execution**: Seamlessly combine AI reasoning with traditional code execution
 
 ### **Intelligent Planning Engine**
-- **Goal-oriented Reasoning**: Set high-level semantic goals and let IntelliFx determine the execution path
+- **Goal-oriented Reasoning**: Set high-level semantic goals and let SimpleAI determine the execution path
 - **Dynamic Plan Generation**: Creates step-by-step execution plans based on available actions and context
 - **Adaptive Execution**: Modifies plans in real-time based on intermediate results and changing conditions
 
@@ -47,22 +47,22 @@ Instead of hardcoded logic, your applications can now:
 
 ```bash
 # .NET CLI
-dotnet add package IntelliFx
+dotnet add package SimpleAI
 
 # Package Manager
-Install-Package IntelliFx
+Install-Package SimpleAI
 
 # PackageReference
-<PackageReference Include="IntelliFx" Version="1.0.0" />
+<PackageReference Include="SimpleAI" Version="1.0.0" />
 ```
 
 ### Basic Setup
 
 ```csharp
-using IntelliFx;
+using SimpleAI;
 
 // Initialize the framework
-var fx = new IntelliFxEngine()
+var fx = new SimpleAIEngine()
     .WithLLM(new OpenAIProvider("your-api-key"))
     .WithMemory(new InMemoryProvider())
     .WithActions(builder => 
@@ -89,7 +89,7 @@ var result = await fx.ExecuteGoalAsync(
 ### Advanced Configuration
 
 ```csharp
-var fx = new IntelliFxEngine()
+var fx = new SimpleAIEngine()
     .WithLLM(new AnthropicProvider("your-api-key"))
     .WithMemory(memory => memory
         .UseShortTerm(new RedisProvider("connection-string"))
@@ -126,7 +126,7 @@ await fx.ExecuteGoalAsync(
         customerAccountId = "cust_789"
     }
 );
-// IntelliFx will: analyze intent → query order database → generate personalized response
+// SimpleAI will: analyze intent → query order database → generate personalized response
 ```
 
 ### Data Analysis Pipeline
@@ -138,7 +138,7 @@ await fx.ExecuteGoalAsync(
         reportFormat = "executive_summary"
     }
 );
-// IntelliFx will: fetch data → perform analysis → identify trends → generate formatted report
+// SimpleAI will: fetch data → perform analysis → identify trends → generate formatted report
 ```
 
 ### Content Management
@@ -150,14 +150,14 @@ await fx.ExecuteGoalAsync(
         categories = availableCategories
     }
 );
-// IntelliFx will: analyze content → check quality → assign categories → schedule publication
+// SimpleAI will: analyze content → check quality → assign categories → schedule publication
 ```
 
 ## 🔧 Architecture
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Application   │───▶│    IntelliFx      │───▶│   LLM Provider  │
+│   Application   │───▶│    SimpleAI      │───▶│   LLM Provider  │
 │                 │    │     Engine       │    │  (OpenAI/etc)   │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
                                 │
@@ -209,10 +209,10 @@ We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md)
 
 ## 📄 License
 
-IntelliFx is licensed under the [MIT License](./LICENSE).
+SimpleAI is licensed under the [MIT License](./LICENSE).
 
 ---
 
 **Made with ❤️ by [The Pumkyn Factory](https://github.com/pumkynfactory)**
 
-*Transform your applications from reactive to intelligent with IntelliFx.*
+*Transform your applications from reactive to intelligent with SimpleAI.*
