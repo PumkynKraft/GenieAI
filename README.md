@@ -1,69 +1,218 @@
-# MyLibrary
+# IntelliFx
 
-Example .NET library template with:
-- GitVersion-based semantic versioning
-- Alpha prereleases on feature/fix branches (published to GitHub Packages)
-- Stable releases on main (published to GitHub + NuGet)
-- Automated tagging
+**An intelligent AI framework that makes your applications truly smart through prompt-based actioning and autonomous reasoning.**
 
-## Branch Strategy
+IntelliFx transforms ordinary applications into intelligent systems by embedding Large Language Models (LLMs) as the thinking brain, enabling natural language processing, automated planning, and self-correcting execution workflows.
 
-| Branch Pattern | Version Tag | Publishes To                  |
-| -------------- | ----------- | ----------------------------- |
-| feature/*      | -alpha.x    | GitHub Packages only          |
-| fix/*          | -alpha.x    | GitHub Packages only          |
-| chore/*        | -alpha.x    | GitHub Packages only          |
-| main (merge)   | stable      | GitHub + NuGet (tag created)  |
-| hotfix/*       | patch stable after merge | GitHub + NuGet |
+## 🧠 Core Concept
 
-## Local Dev
+IntelliFx operates on a simple yet powerful principle: **Semantic Goals → Intelligent Planning → Automated Execution**
+
+Instead of hardcoded logic, your applications can now:
+- Understand natural language inputs and intentions
+- Create dynamic execution plans to achieve semantic goals
+- Execute actions through both AI prompts and code functions
+- Self-correct and adapt based on results and feedback
+
+## 🎯 Key Features
+
+### **Pluggable LLM Integration**
+- **Universal LLM Support**: Works with OpenAI GPT, Anthropic Claude, local models, and any LLM API
+- **Hot-swappable Models**: Change reasoning engines without code modifications
+- **Model-agnostic Architecture**: Write once, run with any compatible LLM
+
+### **Dual Action System**
+- **Semantic Prompts**: Natural language processing actions for reasoning, analysis, and text generation
+- **Code Actions**: Direct function calls for database operations, API integrations, file processing, and system interactions
+- **Hybrid Execution**: Seamlessly combine AI reasoning with traditional code execution
+
+### **Intelligent Planning Engine**
+- **Goal-oriented Reasoning**: Set high-level semantic goals and let IntelliFx determine the execution path
+- **Dynamic Plan Generation**: Creates step-by-step execution plans based on available actions and context
+- **Adaptive Execution**: Modifies plans in real-time based on intermediate results and changing conditions
+
+### **Flexible Memory System**
+- **Short-term Memory**: Scoped to current session/prompt for immediate context and working data
+- **Long-term Memory**: Persistent storage for learning, experience accumulation, and knowledge retention
+- **Pluggable Memory Providers**: Support for in-memory, database, vector stores, and custom memory backends
+
+### **Self-Correction & Learning**
+- **Result Evaluation**: Automatically assess execution outcomes against intended goals
+- **Error Recovery**: Detect failures and generate alternative execution strategies
+- **Continuous Learning**: Improve future performance based on past executions and outcomes
+
+## 🚀 Quick Start
+
+### Installation
 
 ```bash
-dotnet build
-dotnet test
+# .NET CLI
+dotnet add package IntelliFx
+
+# Package Manager
+Install-Package IntelliFx
+
+# PackageReference
+<PackageReference Include="IntelliFx" Version="1.0.0" />
 ```
 
-## Releasing
+### Basic Setup
 
-Merge your PR into main. The `release.yml` workflow will:
-1. Compute version (e.g. 1.2.0)
-2. Tag `v1.2.0`
-3. Publish package to GitHub + NuGet
+```csharp
+using IntelliFx;
 
-## Script
-```
-#!/usr/bin/env bash
-# Local bootstrap script: create a new repo from this template.
-# Requires: gh CLI (authenticated), git, dotnet.
+// Initialize the framework
+var fx = new IntelliFxEngine()
+    .WithLLM(new OpenAIProvider("your-api-key"))
+    .WithMemory(new InMemoryProvider())
+    .WithActions(builder => 
+    {
+        // Register semantic prompts
+        builder.AddSemanticAction("analyze_sentiment", "Analyze the emotional tone of the given text");
+        builder.AddSemanticAction("summarize_content", "Create a concise summary of the provided content");
+        
+        // Register code actions
+        builder.AddCodeAction("fetch_user", async (userId) => await userService.GetUserAsync(userId));
+        builder.AddCodeAction("send_email", async (to, subject, body) => await emailService.SendAsync(to, subject, body));
+    });
 
-set -euo pipefail
-
-if [ $# -lt 2 ]; then
-  echo "Usage: ./script/init-local.sh <org> <NewRepoName>"
-  exit 1
-fi
-
-ORG="$1"
-REPO="$2"
-
-echo "Creating repo $ORG/$REPO..."
-gh repo create "$ORG/$REPO" --public --description "New .NET library $REPO" --disable-wiki --confirm
-
-echo "Cloning..."
-git clone "https://github.com/$ORG/$REPO.git"
-cd "$REPO"
-
-echo "Copying template contents (assuming this script is run from template root)..."
-# Adjust the path to template root if needed
-TEMPLATE_ROOT="$(cd .. && pwd)"
-
-rsync -av --exclude ".git" "$TEMPLATE_ROOT/" .
-
-git add .
-git commit -m "chore: initial template import"
-git push origin main
-
-echo "Done. Set secrets NUGET_API_KEY in GitHub -> Settings -> Secrets."
+// Execute a semantic goal
+var result = await fx.ExecuteGoalAsync(
+    "Analyze the customer feedback and send a personalized response email",
+    context: new { 
+        feedback = "The product is okay but shipping was really slow",
+        customerEmail = "customer@example.com"
+    }
+);
 ```
 
-Pre-releases for feature branches appear as `1.3.0-alpha.5`.
+### Advanced Configuration
+
+```csharp
+var fx = new IntelliFxEngine()
+    .WithLLM(new AnthropicProvider("your-api-key"))
+    .WithMemory(memory => memory
+        .UseShortTerm(new RedisProvider("connection-string"))
+        .UseLongTerm(new PostgreSQLProvider("connection-string")))
+    .WithPlanning(planning => planning
+        .SetMaxPlanSteps(10)
+        .EnableSelfCorrection()
+        .SetRetryAttempts(3))
+    .WithActions(builder => 
+    {
+        // Semantic actions for AI processing
+        builder.AddSemanticPrompt("customer_intent", @"
+            Analyze the customer message and determine their primary intent.
+            Categories: complaint, inquiry, compliment, request, other
+        ");
+        
+        // Code actions for system integration
+        builder.AddCodeAction("query_database", async (sql, parameters) => 
+            await dbContext.ExecuteQueryAsync(sql, parameters));
+        
+        builder.AddCodeAction("call_api", async (endpoint, data) => 
+            await httpClient.PostAsync(endpoint, JsonContent.Create(data)));
+    });
+```
+
+## 📋 Example Use Cases
+
+### Customer Service Automation
+```csharp
+await fx.ExecuteGoalAsync(
+    "Process customer inquiry and provide helpful response",
+    context: new { 
+        customerMessage = "I can't find my order #12345",
+        customerAccountId = "cust_789"
+    }
+);
+// IntelliFx will: analyze intent → query order database → generate personalized response
+```
+
+### Data Analysis Pipeline
+```csharp
+await fx.ExecuteGoalAsync(
+    "Analyze sales data trends and generate executive summary report",
+    context: new { 
+        dataSource = "sales_2024",
+        reportFormat = "executive_summary"
+    }
+);
+// IntelliFx will: fetch data → perform analysis → identify trends → generate formatted report
+```
+
+### Content Management
+```csharp
+await fx.ExecuteGoalAsync(
+    "Review and categorize incoming blog submissions for publication",
+    context: new { 
+        submissions = blogSubmissions,
+        categories = availableCategories
+    }
+);
+// IntelliFx will: analyze content → check quality → assign categories → schedule publication
+```
+
+## 🔧 Architecture
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Application   │───▶│    IntelliFx      │───▶│   LLM Provider  │
+│                 │    │     Engine       │    │  (OpenAI/etc)   │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                │
+                                ▼
+                    ┌──────────────────────┐
+                    │   Planning Engine    │
+                    │ ┌──────────────────┐ │
+                    │ │  Goal Analysis   │ │
+                    │ │  Plan Generation │ │
+                    │ │  Self-Correction │ │
+                    │ └──────────────────┘ │
+                    └──────────────────────┘
+                                │
+                    ┌───────────┴────────────┐
+                    ▼                        ▼
+            ┌───────────────┐      ┌─────────────────┐
+            │ Semantic      │      │ Code Actions    │
+            │ Prompts       │      │ (DB, API, etc)  │
+            └───────────────┘      └─────────────────┘
+                    │                        │
+                    └───────────┬────────────┘
+                                ▼
+                    ┌──────────────────────┐
+                    │   Memory System      │
+                    │ ┌─────────────────┐  │
+                    │ │  Short-term     │  │
+                    │ │  Long-term      │  │
+                    │ │  Learning       │  │
+                    │ └─────────────────┘  │
+                    └──────────────────────┘
+```
+
+## 📚 Documentation
+
+- **[Getting Started Guide](./docs/getting-started.md)** - Complete setup and first steps
+- **[LLM Providers](./docs/llm-providers.md)** - Supported models and configuration
+- **[Action System](./docs/actions.md)** - Creating semantic prompts and code actions
+- **[Memory System](./docs/memory.md)** - Short-term and long-term memory configuration
+- **[Planning Engine](./docs/planning.md)** - Goal setting and execution planning
+- **[API Reference](./docs/api-reference.md)** - Complete API documentation
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
+
+- 🐛 **Bug Reports**: [Issues](https://github.com/pumkynfactory/simplefx/issues)
+- 💡 **Feature Requests**: [Discussions](https://github.com/pumkynfactory/simplefx/discussions)
+- 📖 **Documentation**: Help improve our docs and examples
+
+## 📄 License
+
+IntelliFx is licensed under the [MIT License](./LICENSE).
+
+---
+
+**Made with ❤️ by [The Pumkyn Factory](https://github.com/pumkynfactory)**
+
+*Transform your applications from reactive to intelligent with IntelliFx.*

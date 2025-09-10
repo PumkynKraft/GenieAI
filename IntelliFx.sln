@@ -23,9 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{11FFA13F-5
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibrary", "src\MyLibrary\MyLibrary.csproj", "{6C551900-944F-2C98-0A0F-F58A5DA9B2EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliFx", "src\IntelliFx\IntelliFx.csproj", "{6C551900-944F-2C98-0A0F-F58A5DA9B2EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibrary.Tests", "tests\MyLibrary.Tests\MyLibrary.Tests.csproj", "{AE960517-0FA4-0267-2173-0D04C8D0C427}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliFx.Tests", "tests\IntelliFx.Tests\IntelliFx.Tests.csproj", "{AE960517-0FA4-0267-2173-0D04C8D0C427}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

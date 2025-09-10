@@ -19,6 +19,6 @@
     <PackageReference Include="WireMock.Net" Version="1.6.7" />
   </ItemGroup>  
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MyLibrary\MyLibrary.csproj" />
+    <ProjectReference Include="..\..\src\IntelliFx\IntelliFx.csproj" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-namespace MyLibrary;
+namespace IntelliFx;
 
 public class Class1
 {
