@@ -1,4 +1,4 @@
-# <img src="https://github.com/Pumkyn-Factory/SimpleAI/blob/master/simpleai-icon.png" alt="ninja" style="width:30px;"/> SimpleAI
+# <img src="https://github.com/Pumkyn-Factory/SimpleAI/blob/master/simpleai-icon.png" alt="simple-ai-icon" style="width:30px;"/> SimpleAI
 
 **An intelligent AI framework that makes your applications truly smart through prompt-based actioning and autonomous reasoning.**
 
