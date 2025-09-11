@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SimpleAI.Chat": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
