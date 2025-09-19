@@ -1,12 +1,12 @@
-# <img src="https://github.com/Pumkyn-Factory/SimpleAI/blob/master/images/simple-ai-icon-3.3.png" alt="simple-ai-icon" style="width:60px;"/> SimpleAI
+# <img src="https://github.com/Pumkyn-Factory/GenieAI/blob/master/images/simple-ai-icon-3.3.png" alt="simple-ai-icon" style="width:60px;"/> GenieAI
 
 **An intelligent AI framework that makes your applications truly smart through prompt-based actioning and autonomous reasoning.**
 
-SimpleAI transforms ordinary applications into intelligent systems by embedding Large Language Models (LLMs) as the thinking brain, enabling natural language processing, automated planning, and self-correcting execution workflows.
+GenieAI transforms ordinary applications into intelligent systems by embedding Large Language Models (LLMs) as the thinking brain, enabling natural language processing, automated planning, and self-correcting execution workflows.
 
 ## 🧠 Core Concept
 
-SimpleAI operates on a simple yet powerful principle: **Semantic Goals → Intelligent Planning → Automated Execution**
+GenieAI operates on a simple yet powerful principle: **Semantic Goals → Intelligent Planning → Automated Execution**
 
 Instead of hardcoded logic, your applications can now:
 - Understand natural language inputs and intentions
@@ -27,7 +27,7 @@ Instead of hardcoded logic, your applications can now:
 - **Hybrid Execution**: Seamlessly combine AI reasoning with traditional code execution
 
 ### **Intelligent Planning Engine**
-- **Goal-oriented Reasoning**: Set high-level semantic goals and let SimpleAI determine the execution path
+- **Goal-oriented Reasoning**: Set high-level semantic goals and let GenieAI determine the execution path
 - **Dynamic Plan Generation**: Creates step-by-step execution plans based on available actions and context
 - **Adaptive Execution**: Modifies plans in real-time based on intermediate results and changing conditions
 
@@ -47,22 +47,22 @@ Instead of hardcoded logic, your applications can now:
 
 ```bash
 # .NET CLI
-dotnet add package SimpleAI
+dotnet add package GenieAI
 
 # Package Manager
-Install-Package SimpleAI
+Install-Package GenieAI
 
 # PackageReference
-<PackageReference Include="SimpleAI" Version="1.0.0" />
+<PackageReference Include="GenieAI" Version="1.0.0" />
 ```
 
 ### Basic Setup
 
 ```csharp
-using SimpleAI;
+using GenieAI;
 
 // Initialize the framework
-var fx = new SimpleAIEngine()
+var fx = new GenieAIEngine()
     .WithLLM(new OpenAIProvider("your-api-key"))
     .WithMemory(new InMemoryProvider())
     .WithActions(builder => 
@@ -89,7 +89,7 @@ var result = await fx.ExecuteGoalAsync(
 ### Advanced Configuration
 
 ```csharp
-var fx = new SimpleAIEngine()
+var fx = new GenieAIEngine()
     .WithLLM(new AnthropicProvider("your-api-key"))
     .WithMemory(memory => memory
         .UseShortTerm(new RedisProvider("connection-string"))
@@ -126,7 +126,7 @@ await fx.ExecuteGoalAsync(
         customerAccountId = "cust_789"
     }
 );
-// SimpleAI will: analyze intent → query order database → generate personalized response
+// GenieAI will: analyze intent → query order database → generate personalized response
 ```
 
 ### Data Analysis Pipeline
@@ -138,7 +138,7 @@ await fx.ExecuteGoalAsync(
         reportFormat = "executive_summary"
     }
 );
-// SimpleAI will: fetch data → perform analysis → identify trends → generate formatted report
+// GenieAI will: fetch data → perform analysis → identify trends → generate formatted report
 ```
 
 ### Content Management
@@ -150,14 +150,14 @@ await fx.ExecuteGoalAsync(
         categories = availableCategories
     }
 );
-// SimpleAI will: analyze content → check quality → assign categories → schedule publication
+// GenieAI will: analyze content → check quality → assign categories → schedule publication
 ```
 
 ## 🔧 Architecture
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Application   │───▶│    SimpleAI      │───▶│   LLM Provider  │
+│   Application   │───▶│    GenieAI      │───▶│   LLM Provider  │
 │                 │    │     Engine       │    │  (OpenAI/etc)   │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
                                 │
@@ -209,10 +209,10 @@ We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md)
 
 ## 📄 License
 
-SimpleAI is licensed under the [MIT License](./LICENSE).
+GenieAI is licensed under the [MIT License](./LICENSE).
 
 ---
 
 **Made with ❤️ by [The Pumkyn Factory](https://github.com/pumkynfactory)**
 
-*Transform your applications from reactive to intelligent with SimpleAI.*
+*Transform your applications from reactive to intelligent with GenieAI.*
