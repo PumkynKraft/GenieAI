@@ -1,4 +1,4 @@
-# <img src="https://github.com/pumkynkraft/GenieAI/blob/master/images/simple-ai-icon-3.3.png" alt="simple-ai-icon" style="width:60px;"/> GenieAI
+# <img src="https://github.com/pumkynkraft/GenieAI/blob/master/images/GenieAI.png" alt="simple-ai-icon" style="width:60px;"/> GenieAI
 
 **An intelligent AI framework that makes your applications truly smart through prompt-based actioning and autonomous reasoning.**
 
