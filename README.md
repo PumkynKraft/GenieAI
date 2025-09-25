@@ -212,7 +212,4 @@ We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md)
 GenieAI is licensed under the [MIT License](./LICENSE).
 
 ---
-
-**Made with ❤️ by [The Pumkyn Factory](https://github.com/pumkynfactory)**
-
 *Transform your applications from reactive to intelligent with GenieAI.*
